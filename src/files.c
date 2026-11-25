@@ -19,13 +19,12 @@ void listFiles() {
     }
 
     closedir(dir);
-	
-	return;
+
 }
 
 int createFile(const char *name) {
 
-	FILE *file = fopen(name, "a");
+	FILE *file = fopen(name, "wx");
 
 	if (file == NULL) {
 		perror("fopen");
@@ -36,5 +35,18 @@ int createFile(const char *name) {
 
 	fclose(file);
 
+	return 0;
+}
+
+int deleteFile(const char *name) {
+	int result = remove(name);
+
+	if (result != 0) {
+		perror("remove");
+		return 1;
+	}
+
+	printf("File deleted successfully!\n");
+	
 	return 0;
 }

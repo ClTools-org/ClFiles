@@ -5,4 +5,8 @@
 int main() {
     createFile("test.txt");
 	listFiles();
+	deleteFile("test.txt");
+	listFiles();
+
+	return 0;
 }
