@@ -3,5 +3,6 @@
 #include "files.h"
 
 int main() {
-    listFiles();
+    createFile("test.txt");
+	listFiles();
 }

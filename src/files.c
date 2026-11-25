@@ -22,3 +22,19 @@ void listFiles() {
 	
 	return;
 }
+
+int createFile(const char *name) {
+
+	FILE *file = fopen(name, "a");
+
+	if (file == NULL) {
+		perror("fopen");
+		return 1;
+	}
+
+	printf("File created succesfully!\n");
+
+	fclose(file);
+
+	return 0;
+}
