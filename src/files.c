@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include "files.h"
 #include <string.h>
+#include <stdlib.h>
+
 
 char ** listFiles() {
     printf("Listing files...\n");
@@ -14,7 +16,8 @@ char ** listFiles() {
 
     if (dir == NULL) {
         perror("opendir");
-        return;
+        free(files)
+		return NULL;
     }
 
     struct dirent *entry;
@@ -24,7 +27,9 @@ char ** listFiles() {
 		count++;
     }
 
-    closedir(dir)
+    closedir(dir);
+
+	return files;
 
 }
 

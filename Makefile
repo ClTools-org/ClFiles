@@ -1,13 +1,23 @@
-CC = gcc
-CFLAGS = -Wall -Wextra -Wpedantic -Iinclude -std=c11 -lncurses
 
+CC = gcc
+CFLAGS = -Wall -Wextra -Wpedantic -std=c11
+CPPFLAGS = -Iinclude
+LDLIBS = -lncurses
+
+TTARGET = bin/test
+TSRC = tests/test.c src/files.c src/ui.c
 TARGET = bin/ClFiles
 SRC = src/main.c src/files.c src/ui.c
 
-.PHONY: all clean
+.PHONY: all clean test
 
 all:
-	$(CC) $(CFLAGS) $(SRC) -o $(TARGET)
+	$(CC) $(CPPFLAGS) $(CFLAGS) $(SRC) -o $(TARGET) $(LDLIBS)
+
+test:
+	$(CC) $(CPPFLAGS) $(CFLAGS) $(TSRC) -o $(TTARGET) $(LDLIBS)
 
 clean:
 	rm -f $(TARGET)
+	rm -f $(TTARGET)
+
