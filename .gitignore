@@ -1,3 +1,7 @@
 *.un~
 bin/
-tests/
+tmp/
+*.swp
+a.out
+*.out
+

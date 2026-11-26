@@ -1,10 +1,15 @@
 #include <dirent.h>
 #include <stdio.h>
 #include "files.h"
+#include <string.h>
 
-void listFiles() {
+char ** listFiles() {
     printf("Listing files...\n");
-    
+	
+
+	char **files = malloc(100 * sizeof(char *));
+	int count = 0;
+
 	DIR *dir = opendir(".");
 
     if (dir == NULL) {
@@ -15,10 +20,11 @@ void listFiles() {
     struct dirent *entry;
 
     while ((entry = readdir(dir))  != NULL) {
-        printf("%s\n", entry->d_name);
+        files[count] = strdup(entry->d_name);
+		count++;
     }
 
-    closedir(dir);
+    closedir(dir)
 
 }
 
