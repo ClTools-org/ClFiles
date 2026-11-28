@@ -1,8 +1,10 @@
 #include <stdio.h>
 #include "files.h"
+#include "ui.h"
 
 int main() {
-	listFiles();
-
+	initUI();
+	drawUI();
+	cleanupUI();
 	return 0;
 }

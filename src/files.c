@@ -1,3 +1,4 @@
+#define _POSIX_C_SOURCE 200809L
 #include <dirent.h>
 #include <stdio.h>
 #include "files.h"
@@ -6,8 +7,6 @@
 
 
 char ** listFiles() {
-    printf("Listing files...\n");
-	
 
 	char **files = malloc(100 * sizeof(char *));
 	int count = 0;
@@ -16,7 +15,7 @@ char ** listFiles() {
 
     if (dir == NULL) {
         perror("opendir");
-        free(files)
+        free(files);
 		return NULL;
     }
 
